@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты гамбургер-кнопок</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+        }
+        
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .variant-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .variant-title {
+            color: #3498db;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .demo-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        
+        /* Базовые стили для всех кнопок */
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 15px;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+        }
+        
+        .hamburger-btn:focus {
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+        }
+        
+        .hamburger-btn:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .hamburger-line {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #2c3e50;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        
+        /* Вариант 1: Классический гамбургер в крестик */
+        .hamburger-1 .hamburger-line:nth-child(1) {
+            top: 20px;
+        }
+        
+        .hamburger-1 .hamburger-line:nth-child(2) {
+            top: 28px;
+        }
+        
+        .hamburger-1 .hamburger-line:nth-child(3) {
+            top: 36px;
+        }
+        
+        .hamburger-1.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg);
+            top: 28px;
+        }
+        
+        .hamburger-1.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-1.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 28px;
+        }
+        
+        /* Вариант 2: Анимация стрелки */
+        .hamburger-2 .hamburger-line:nth-child(1) {
+            top: 20px;
+        }
+        
+        .hamburger-2 .hamburger-line:nth-child(2) {
+            top: 28px;
+            width: 25px;
+            right: 17.5px;
+        }
+        
+        .hamburger-2 .hamburger-line:nth-child(3) {
+            top: 36px;
+        }
+        
+        .hamburger-2.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg);
+            top: 28px;
+            width: 25px;
+            left: 17.5px;
+        }
+        
+        .hamburger-2.active .hamburger-line:nth-child(2) {
+            transform: rotate(180deg);
+            opacity: 0;
+        }
+        
+        .hamburger-2.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 28px;
+            width: 25px;
+            left: 17.5px;
+        }
+        
+        /* Вариант 3: Тонкая анимация */
+        .hamburger-3 .hamburger-line {
+            height: 2px;
+            width: 35px;
+        }
+        
+        .hamburger-3 .hamburger-line:nth-child(1) {
+            top: 22px;
+        }
+        
+        .hamburger-3 .hamburger-line:nth-child(2) {
+            top: 29px;
+        }
+        
+        .hamburger-3 .hamburger-line:nth-child(3) {
+            top: 36px;
+        }
+        
+        .hamburger-3.active .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        
+        .hamburger-3.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-3.active .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        
+        /* Вариант 4: Анимация с цветом */
+        .hamburger-4 {
+            background-color: #3498db;
+        }
+        
+        .hamburger-4 .hamburger-line {
+            background-color: white;
+            width: 25px;
+        }
+        
+        .hamburger-4 .hamburger-line:nth-child(1) {
+            top: 22px;
+        }
+        
+        .hamburger-4 .hamburger-line:nth-child(2) {
+            top: 29px;
+        }
+        
+        .hamburger-4 .hamburger-line:nth-child(3) {
+            top: 36px;
+        }
+        
+        .hamburger-4.active {
+            background-color: #e74c3c;
+        }
+        
+        .hamburger-4.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger-4.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-4.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Пример выдвижного меню */
+        .menu-demo {
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .menu-demo.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .menu-demo h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-demo ul {
+            list-style: none;
+        }
+        
+        .menu-demo li {
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background 0.2s;
+            color: #34495e;
+        }
+        
+        .menu-demo li:hover {
+            background: #f8f9fa;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .instructions {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .variants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Гамбургер-кнопки для мобильных устройств</h1>
+        <p class="subtitle">4 варианта анимации иконки меню на чистом HTML/CSS</p>
+        
+        <div class="variants-grid">
+            <!-- Вариант 1 -->
+            <div class="variant-card">
+                <h2 class="variant-title">Классический</h2>
+                <p>Плавное превращение в крестик</p>
+                
+                <div class="demo-area">
+                    <button class="hamburger-btn hamburger-1" id="hamburger1" aria-label="Меню">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                    
+                    <div class="menu-demo" id="menu1">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li>Главная</li>
+                            <li>О нас</li>
+                            <li>Услуги</li>
+                            <li>Портфолио</li>
+                            <li>Контакты</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="instructions">Нажмите на кнопку, чтобы увидеть анимацию и меню</p>
+                </div>
+                
+                <div class="code-block">
+                    <pre><code>.hamburger-1.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 28px;
+}
+
+.hamburger-1.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-1.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+}</code></pre>
+                </div>
+            </div>
+            
+            <!-- Вариант 2 -->
+            <div class="variant-card">
+                <h2 class="variant-title">Стрелка</h2>
+                <p>Превращение в стрелку при закрытии</p>
+                
+                <div class="demo-area">
+                    <button class="hamburger-btn hamburger-2" id="hamburger2" aria-label="Меню">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                    
+                    <div class="menu-demo" id="menu2">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li>Главная</li>
+                            <li>О нас</li>
+                            <li>Услуги</li>
+                            <li>Портфолио</li>
+                            <li>Контакты</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="instructions">Нажмите на кнопку, чтобы увидеть анимацию и меню</p>
+                </div>
+                
+                <div class="code-block">
+                    <pre><code>.hamburger-2.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 28px;
+    width: 25px;
+    left: 17.5px;
+}
+
+.hamburger-2.active .hamburger-line:nth-child(2) {
+    transform: rotate(180deg);
+    opacity: 0;
+}
+
+.hamburger-2.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    width: 25px;
+    left: 17.5px;
+}</code></pre>
+                </div>
+            </div>
+            
+            <!-- Вариант 3 -->
+            <div class="variant-card">
+                <h2 class="variant-title">Минималистичный</h2>
+                <p>Тонкие линии, плавное движение</p>
+                
+                <div class="demo-area">
+                    <button class="hamburger-btn hamburger-3" id="hamburger3" aria-label="Меню">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                    
+                    <div class="menu-demo" id="menu3">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li>Главная</li>
+                            <li>О нас</li>
+                            <li>Услуги</li>
+                            <li>Портфолио</li>
+                            <li>Контакты</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="instructions">Нажмите на кнопку, чтобы увидеть анимацию и меню</p>
+                </div>
+                
+                <div class="code-block">
+                    <pre><code>.hamburger-3.active .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-3.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-3.active .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}</code></pre>
+                </div>
+            </div>
+            
+            <!-- Вариант 4 -->
+            <div class="variant-card">
+                <h2 class="variant-title">Цветной</h2>
+                <p>Смена цвета фона при активации</p>
+                
+                <div class="demo-area">
+                    <button class="hamburger-btn hamburger-4" id="hamburger4" aria-label="Меню">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                    
+                    <div class="menu-demo" id="menu4">
+                        <h3>Навигация</h3>
+                        <ul>
+                            <li>Главная</li>
+                            <li>О нас</li>
+                            <li>Услуги</li>
+                            <li>Портфолио</li>
+                            <li>Контакты</li>
+                        </ul>
+                    </div>
+                    
+                    <p class="instructions">Нажмите на кнопку, чтобы увидеть анимацию и меню</p>
+                </div>
+                
+                <div class="code-block">
+                    <pre><code>.hamburger-4 {
+    background-color: #3498db;
+}
+
+.hamburger-4.active {
+    background-color: #e74c3c;
+}
+
+.hamburger-4.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-4.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-4.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Функция для переключения состояния кнопки и меню
+        function setupHamburger(buttonId, menuId) {
+            const button = document.getElementById(buttonId);
+            const menu = document.getElementById(menuId);
+            
+            button.addEventListener('click', function() {
+                // Переключаем класс active для кнопки
+                this.classList.toggle('active');
+                
+                // Переключаем класс active для меню
+                if (menu) {
+                    menu.classList.toggle('active');
+                }
+                
+                // Меняем атрибут aria-label для доступности
+                const isActive = this.classList.contains('active');
+                this.setAttribute('aria-label', isActive ? 'Закрыть меню' : 'Открыть меню');
+            });
+        }
+        
+        // Настраиваем все кнопки
+        setupHamburger('hamburger1', 'menu1');
+        setupHamburger('hamburger2', 'menu2');
+        setupHamburger('hamburger3', 'menu3');
+        setupHamburger('hamburger4', 'menu4');
+        
+        // Закрытие меню при клике вне кнопки
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.hamburger-btn')) {
+                // Закрываем все меню
+                document.querySelectorAll('.menu-demo').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                
+                // Возвращаем все кнопки в исходное состояние
+                document.querySelectorAll('.hamburger-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-label', 'Меню');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
