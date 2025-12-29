@@ -1,0 +1,147 @@
+/* Боковая панель */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.1);
+    transition: left 0.3s ease;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+aside .auth-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    padding: 0px 25px;
+}
+
+aside .auth-buttons a {
+    text-align: center;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    padding: 30px 25px 20px;
+    background: #3498db;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.sidebar-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 40px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    height: 50px;
+    transition: background 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-nav li a {
+    padding-left: 25px;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar-nav li:hover {
+    background: #f8f9fa;
+    border-left-color: #3498db;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.sidebar-nav i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-top: 1px solid #eee;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Оверлей для мобильных устройств */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+    z-index: 2;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        left: -100%;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+}

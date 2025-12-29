@@ -1,0 +1,435 @@
+:root {
+    --primary: #01b8e0;
+    --primary-dark: #0199b8;
+    --primary-light: rgba(1, 184, 224, 0.1);
+    --white: #FFFFFF;
+    --black: #000000;
+    --gray-light: #f8fafc;
+    --gray-medium: #e2e8f0;
+    --gray-dark: #64748b;
+    --text: #1e293b;
+    --error: #ef4444;
+    --success: #10b981;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --radius: 16px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gray-light);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-image: url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-heavy);
+}
+
+/* Левая панель с информацией */
+.info-panel {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary), #01c8ff);
+    color: var(--white);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    width: 75px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.info-panel h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.info-panel p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.features-list {
+    list-style: none;
+    margin: 40px 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.features-list i {
+    margin-right: 15px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 40px;
+    opacity: 0.9;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+}
+
+.back-link i {
+    margin-right: 10px;
+}
+
+/* Правая панель с формой */
+.form-panel {
+    flex: 1;
+    background-color: var(--white);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    margin-bottom: 40px;
+}
+
+.form-header h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.form-header p {
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+}
+
+.user-type-selector {
+    display: flex;
+    background-color: var(--gray-light);
+    border-radius: 50px;
+    padding: 5px;
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+.user-type {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--gray-dark);
+}
+
+.user-type.active {
+    background-color: var(--white);
+    color: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon #password{
+    padding-right: 50px;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-dark);
+    font-size: 18px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius);
+    font-size: 16px;
+    transition: var(--transition);
+    background-color: var(--white);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.password-toggle {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray-dark);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+}
+
+.forgot-password {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(90deg, var(--primary), #01c8ff);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(1, 184, 224, 0.3);
+    margin-bottom: 30px;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(1, 184, 224, 0.4);
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    color: var(--gray-dark);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--gray-medium);
+}
+
+.divider span {
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+.social-login {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid var(--gray-medium);
+    border-radius: var(--radius);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.social-btn:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.social-btn i {
+    font-size: 20px;
+}
+
+.btn-google {
+    color: #DB4437;
+}
+
+.btn-vk {
+    color: #4C75A3;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--gray-dark);
+}
+
+.register-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        max-width: 600px;
+    }
+    
+    .info-panel {
+        display: none;
+    }
+    
+    .form-panel {
+        padding: 50px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+    
+    .info-panel, .form-panel {
+        padding: 30px 20px;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .user-type-selector {
+        width: 100%;
+    }
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-panel > * {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-options { animation-delay: 0.3s; }
+.btn-login { animation-delay: 0.4s; }
+.divider { animation-delay: 0.5s; }
+.social-login { animation-delay: 0.6s; }
+.register-link { animation-delay: 0.7s; }
+
+/* Сообщения об ошибке */
+.error-message {
+    color: var(--error);
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-control.error {
+    border-color: var(--error);
+}

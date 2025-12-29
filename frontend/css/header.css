@@ -4,49 +4,45 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
-.auth-buttons {
+header .auth-buttons {
     display: flex;
     gap: 15px;
 }
 
-.logo {
+header .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--primary);
 }
 
-.logo img {
-    height: 50px;
+header .logo img {
+    height: 75px;
 }
 
-.logo-text {
+header .logo-text {
     background: linear-gradient(90deg, var(--primary), #01c8ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-nav ul {
+header nav ul {
     display: flex;
     list-style: none;
     gap: 30px;
     align-items: center;
 }
 
-nav a {
+header nav a {
     text-decoration: none;
     color: var(--text);
     font-weight: 500;
@@ -55,27 +51,90 @@ nav a {
     position: relative;
 }
 
-nav a:hover:after {
+header nav a:hover:after {
     width: 100%;
 }
 
-.mobile-menu-btn {
+/* Базовые стили для всех кнопок */
+header .hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+header .hamburger-btn:focus {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+header .hamburger-btn:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+header .hamburger-line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #2c3e50;
+    position: absolute;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+header .hamburger-1 {
     display: none;
 }
 
+header .hamburger-1 .hamburger-line:nth-child(1) {
+    top: 20px;
+}
+
+header .hamburger-1 .hamburger-line:nth-child(2) {
+    top: 28px;
+}
+
+header .hamburger-1 .hamburger-line:nth-child(3) {
+    top: 36px;
+}
+
+header .hamburger-1.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+    top: 28px;
+    background-color: #3498db;
+}
+
+header .hamburger-1.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+header .hamburger-1.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    background-color: #3498db;
+}
+
 @media (max-width: 992px) {
-    nav ul {
+    header nav ul {
         display: none;
     }
-    .auth-buttons {
+    header .auth-buttons {
         display: none;
     }
-    .mobile-menu-btn {
+    header .hamburger-1 {
         display: block;
-        font-size: 24px;
-        color: var(--primary);
-        background: none;
-        border: none;
-        cursor: pointer;
+    }
+    header {
+        z-index: 1;
+        width: 100%;
     }
 }
