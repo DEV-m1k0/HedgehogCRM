@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в личный кабинет | Hedgehog Academy</title>
+    <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/inputs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -105,29 +107,6 @@
             }
         });
         
-        // Переключение типа пользователя
-        document.querySelectorAll('.user-type').forEach(button => {
-            button.addEventListener('click', function() {
-                // Удаляем активный класс у всех кнопок
-                document.querySelectorAll('.user-type').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Добавляем активный класс текущей кнопке
-                this.classList.add('active');
-                
-                // Меняем placeholder в зависимости от типа пользователя
-                const userType = this.getAttribute('data-type');
-                const emailInput = document.getElementById('email');
-                
-                if (userType === 'teacher' || userType === 'manager') {
-                    emailInput.placeholder = 'work.email@hedgehog-academy.ru';
-                } else {
-                    emailInput.placeholder = 'example@email.com';
-                }
-            });
-        });
-        
         // Валидация формы
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -181,19 +160,6 @@
                     // В реальном приложении: window.location.href = 'dashboard.html';
                 }, 1500);
             }
-        });
-        
-        // Социальный логин
-        document.querySelectorAll('.social-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const socialName = this.classList.contains('btn-google') ? 'Google' : 'ВКонтакте';
-                alert(`В реальном приложении здесь будет перенаправление на авторизацию через ${socialName}`);
-            });
-        });
-        
-        // Анимация при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.form-panel').style.opacity = '1';
         });
     </script>
 </body>

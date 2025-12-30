@@ -8,9 +8,12 @@
     --gray-medium: #e2e8f0;
     --gray-dark: #64748b;
     --text: #1e293b;
+    --error: #ef4444;
     --success: #10b981;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    --radius: 12px;
+    --warning: #f59e0b;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --radius: 16px;
     --transition: all 0.3s ease;
 }
 

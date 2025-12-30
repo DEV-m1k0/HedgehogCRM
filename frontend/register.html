@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация | Hedgehog Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/inputs.css">
+</head>
+<body>
+    <div class="register-container">
+        <!-- Левая панель с информацией -->
+        <div class="info-panel">
+            <div class="info-panel-content">     
+                <div class="info-panel-content-header">
+                    <h1>Присоединяйтесь к нам!</h1>
+                    <p>Создайте аккаунт, чтобы получить доступ к личному кабинету, следить за успехами вашего ребенка и управлять обучением.</p>
+                </div>           
+                
+                <ul class="registration-steps">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Выберите тип аккаунта</h4>
+                            <p>Укажите, кто вы: родитель, ученик или сотрудник академии</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Заполните информацию</h4>
+                            <p>Введите ваши контактные данные и создайте безопасный пароль</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Вернуться на главную страницу
+                </a>
+            </div>
+        </div>
+        
+        <!-- Правая панель с формой регистрации -->
+        <div class="form-panel">
+            <div class="form-header">
+                <h2>Создание аккаунта</h2>
+                <p>Заполните форму ниже, чтобы зарегистрироваться в системе</p>
+            </div>
+            
+            <!-- Индикатор шагов -->
+            <div class="step-indicator">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Тип аккаунта</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Основная информация</div>
+                </div>
+            </div>
+            
+            <!-- Шаг 1: Выбор типа регистрации -->
+            <div class="form-step active" id="step1">
+                <div class="registration-type">
+                    <div class="type-card selected" data-type="parent">
+                        <div class="type-icon parent-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="type-info">
+                            <h4>Родитель</h4>
+                            <p>Регистрация для родителей, которые хотят отслеживать успехи ребенка, управлять расписанием и оплатой обучения</p>
+                        </div>
+                    </div>
+                    
+                    <div class="type-card" data-type="student">
+                        <div class="type-icon student-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="type-info">
+                            <h4>Ученик (от 14 лет)</h4>
+                            <p>Регистрация для самостоятельных учеников, которые хотят получить доступ к материалам курса и заданиям</p>
+                        </div>
+                    </div>
+                    
+                    <div class="type-card" data-type="employee">
+                        <div class="type-icon parent-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="type-info">
+                            <h4>Сотрудник академии</h4>
+                            <p>Регистрация для преподавателей и сотрудников IT-академии Hedgehog (только по приглашению)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <div></div> <!-- Пустой div для выравнивания -->
+                    <button class="btn btn-primary" id="nextStep1">Продолжить <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            
+            <!-- Шаг 2: Форма регистрации -->
+            <div class="form-step" id="step2">
+                <form id="registrationForm">
+                    <!-- Общие поля для всех типов -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="required">Имя</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="firstName" class="form-control" placeholder="Введите ваше имя" required>
+                            </div>
+                            <div class="error-message" id="firstName-error">Пожалуйста, введите ваше имя</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName" class="required">Фамилия</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="lastName" class="form-control" placeholder="Введите вашу фамилию" required>
+                            </div>
+                            <div class="error-message" id="lastName-error">Пожалуйста, введите вашу фамилию</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="required">Электронная почта</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+                        </div>
+                        <div class="error-message" id="email-error">Пожалуйста, введите корректный email</div>
+                        <div class="success-message" id="email-success">Email доступен для регистрации</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="required">Телефон</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" class="form-control" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+                        <div class="error-message" id="phone-error">Пожалуйста, введите корректный номер телефона</div>
+                    </div>
+                    
+                    <!-- Дополнительные поля для родителя -->
+                    <div id="parent-fields" class="additional-fields">
+                        <div class="form-group">
+                            <label for="childName">Имя ребенка (если регистрируетесь для ребенка)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-child"></i>
+                                <input type="text" id="childName" class="form-control" placeholder="Введите имя ребенка">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="childAge">Возраст ребенка</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-birthday-cake"></i>
+                                <input type="number" id="childAge" class="form-control" placeholder="Укажите возраст" min="5" max="18">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Дополнительные поля для ученика -->
+                    <div id="student-fields" class="additional-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="studentAge" class="required">Возраст</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-birthday-cake"></i>
+                                <input type="number" id="studentAge" class="form-control" placeholder="Укажите ваш возраст" min="14" max="18">
+                            </div>
+                            <div class="error-message" id="age-error">Для самостоятельной регистрации вам должно быть не менее 14 лет</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interests">Интересы в IT</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-laptop-code"></i>
+                                <input type="text" id="interests" class="form-control" placeholder="Например: программирование, дизайн, разработка игр">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Дополнительные поля для сотрудника -->
+                    <div id="employee-fields" class="additional-fields" style="display: none;">                        
+                        <div class="form-group">
+                            <label for="position" class="required">Должность</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-briefcase"></i>
+                                <select class="form-control" name="position" id="position" placeholder="Укажите вашу должность" required>
+                                    <option value="teacher">Преподаватель</option>
+                                    <option value="manager">Менеджер</option>
+                                    <option value="admin">Администратор</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password" class="required">Пароль</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" class="form-control" placeholder="Создайте надежный пароль" required>
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-meter">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <div class="strength-text" id="strengthText">Надежность пароля: не указан</div>
+                            </div>
+                            <div class="error-message" id="password-error">Пароль должен содержать не менее 8 символов, включая буквы и цифры</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="required">Подтверждение пароля</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="Повторите пароль" required>
+                                <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="error-message" id="confirm-error">Пароли не совпадают</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreement" required>
+                        <label for="agreement">
+                            Я соглашаюсь с <a href="#">Пользовательским соглашением</a> и даю согласие на обработку моих персональных данных в соответствии с <a href="#">Политикой конфиденциальности</a>
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter">
+                        <label for="newsletter">
+                            Я хочу получать новости о новых курсах, акциях и мероприятиях академии
+                        </label>
+                    </div>
+                    
+                    <div class="form-navigation">
+                        <button type="button" class="btn btn-outline" id="prevStep2"><i class="fas fa-arrow-left"></i> Назад</button>
+                        <button type="submit" id="registerButton" class="btn btn-primary">Зарегистрироваться <i class="fas fa-user-plus"></i></button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="login-link">
+                Уже есть аккаунт? <a href="login.html">Войдите в систему</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/register.js"></script>
+</body>
+</html>
