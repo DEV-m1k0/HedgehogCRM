@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в личный кабинет | Hedgehog Academy</title>
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/login.css">
-    <link rel="stylesheet" href="./css/inputs.css">
+    <!-- Сначала базовые стили -->
+    <link rel="stylesheet" href="css/base.css">
+    <!-- Затем общие стили форм и инпутов -->
+    <link rel="stylesheet" href="css/inputs.css">
+    <!-- Затем стили для конкретной страницы -->
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="form-container">
         <!-- Левая панель с информацией -->
         <div class="info-panel">
             <div>
@@ -27,25 +30,21 @@
                         <span>Отслеживайте успеваемость и прогресс</span>
                     </li>
                     <li>
-                        <i class="fas fa-comments"></i>
-                        <span>Общайтесь с преподавателями</span>
+                        <i class="fa-regular fa-calendar-check"></i>
+                        <span>Просматривайте записи на занятия</span>
                     </li>
                     <li>
                         <i class="fas fa-tasks"></i>
-                        <span>Получайте домашние задания и материалы</span>
+                        <span>Выставляйте или просматривайте задачи</span>
                     </li>
                 </ul>
-                
-                <a href="index.html" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Вернуться на главную страницу
-                </a>
             </div>
         </div>
         
         <!-- Правая панель с формой входа -->
         <div class="form-panel">
             <div class="form-header">
-                <h2>Вход в аккаунт</h2>
+                <h1>Вход в аккаунт</h1>
                 <p>Введите ваши учетные данные для доступа к личному кабинету</p>
             </div>
             

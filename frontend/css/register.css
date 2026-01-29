@@ -205,6 +205,10 @@ body {
     margin-bottom: 25px;
 }
 
+.form-group.triple {
+    display: flex;
+}
+
 .form-row {
     display: flex;
     gap: 20px;
