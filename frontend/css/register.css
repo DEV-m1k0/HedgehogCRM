@@ -22,8 +22,7 @@ body {
 .register-container {
     display: flex;
     width: 100%;
-    max-width: 1300px;
-    min-height: 800px;
+    max-width: 1600px;
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow-heavy);
@@ -68,6 +67,23 @@ body {
     flex-direction: column;
 }
 
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--gray-dark);
+}
+
+.register-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
 .registration-steps li {
     display: flex;
     align-items: center;
@@ -83,26 +99,6 @@ body {
 
 .step-content p {
     margin-bottom: 0;
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    color: var(--white);
-    text-decoration: none;
-    font-weight: 500;
-    margin-top: 40px;
-    opacity: 0.9;
-    transition: var(--transition);
-}
-
-.back-link:hover {
-    opacity: 1;
-    transform: translateX(-5px);
-}
-
-.back-link i {
-    margin-right: 10px;
 }
 
 /* Правая панель с формой */
@@ -132,176 +128,20 @@ body {
     font-size: 1.1rem;
 }
 
-/* Выбор типа регистрации */
-.registration-type {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.type-card {
-    padding: 15px;
-    border: 2px solid var(--gray-medium);
-    border-radius: var(--radius);
-    cursor: pointer;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.type-card:hover {
-    border-color: var(--primary);
-    background-color: var(--primary-light);
-}
-
-.type-card.selected {
-    border-color: var(--primary);
-    background-color: var(--primary-light);
-}
-
-.type-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
-.parent-icon {
-    background-color: rgba(1, 184, 224, 0.1);
-    color: var(--primary);
-}
-
-.student-icon {
-    background-color: rgba(16, 185, 129, 0.1);
-    color: var(--success);
-}
-
-.type-info h4 {
-    font-size: 1.3rem;
-    margin-bottom: 5px;
-}
-
-.type-info p {
-    color: var(--gray-dark);
-    font-size: 0.95rem;
-}
-
-/* Форма регистрации */
-.form-register-container {
-    display: none;
-}
-
-.form-register-container.active {
-    display: block;
-}
-
-.form-group {
-    margin-bottom: 25px;
-}
-
-.form-group.triple {
-    display: flex;
-}
-
-.form-row {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text);
-}
-
 .required::after {
     content: " *";
     color: var(--error);
 }
 
-.password-toggle {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--gray-dark);
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.divider {
-    display: flex;
-    align-items: center;
-    margin: 25px 0;
-    color: var(--gray-dark);
-}
-
-.divider::before,
-.divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background-color: var(--gray-medium);
-}
-
-.divider span {
-    padding: 0 20px;
-    font-size: 14px;
-}
-
-.login-link {
-    text-align: center;
-    margin-top: 20px;
-    color: var(--gray-dark);
-}
-
-.login-link a {
-    color: var(--primary);
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-.form-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
 
 /* Адаптивность */
 @media (max-width: 1100px) {
-    .register-register-container {
-        flex-direction: column;
-        max-width: 700px;
+    body {
+        padding: 20px;
     }
-    
+
     .info-panel {
-        padding: 40px 30px;
-    }
-    
-    .form-panel {
-        padding: 40px 30px;
-        max-height: none;
+        display: none;
     }
     
     .info-panel h1 {
@@ -309,47 +149,62 @@ body {
     }
 }
 
-/* Адаптивность */
-@media (max-width: 992px) {
-    .container {
-        flex-direction: column;
-        max-width: 600px;
-    }
-    
-    .info-panel {
-        display: none;
-    }
-    
-    .form-panel {
-        padding: 50px;
-        gap: 10px;
-    }
-}
-
 @media (max-width: 576px) {
     body {
-        padding: 10px;
+        padding: 0;
     }
-    
-    .info-panel, .form-panel {
-        padding: 30px 20px;
+
+    .register-container {
+        border-radius: 0;
+        height: 100vh;
     }
-    
-    .form-row {
+
+    .form-group-triple {
         flex-direction: column;
-        gap: 0;
+        gap: 0 !important;
+        margin: 0 !important;
     }
-    
-    .social-registration {
+
+    .form-panel {
+        height: 100vh;
+        padding: 10px 20px;
+        display: flex;
         flex-direction: column;
+        justify-content: space-evenly;
     }
-    
-    .registration-type {
-        gap: 10px;
+
+    .name-field {
+        margin-bottom: 10px;
     }
-    
-    .type-card {
-        padding: 15px;
+
+    .form-group {
+        margin-bottom: 10px !important;
+    }
+
+    .form-group input {
+        height: 50px;
+    }
+
+    .form-header {
+        margin-bottom: 0;
+    }
+
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .form-header p {
+        display: none;
+    }
+
+    .btn-login {
+        padding: 12px 0px !important;
+        margin-top: 20px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .register-link {
+        margin-top: 0;
     }
 }
 
@@ -411,10 +266,13 @@ body {
 }
 
 .info-panel .step-number {
-    font-size: 32px;
-    height: 100%;
-    padding-right: 25px;
+    font-size: 28px;
+    margin-right: 25px;
     color: var(--white);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;

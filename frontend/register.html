@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/register.css">
-    <link rel="stylesheet" href="./css/login.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/inputs.css">
 </head>
@@ -25,52 +24,58 @@
                     <li>
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h4>Введите данные</h4>
-                            <p>Укажите, кто вы: родитель, ученик или сотрудник академии</p>
+                            <h4>Заполните все поля</h4>
+                            <p>
+                                Будьте внимательны при вводе данных, 
+                                так как они будут использоваться для входа в личный кабинет.
+                            </p>
                         </div>
                     </li>
                     <li>
                         <div class="step-number">2</div>
                         <div class="step-content">
-                            <h4>Заполните информацию</h4>
-                            <p>Введите ваши контактные данные и создайте безопасный пароль</p>
+                            <h4>Отправляй заявку!</h4>
+                            <p>Нажми на кнопку "Зарегистрироваться"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Подтверждение заявки</h4>
+                            <p>Ожитдайте, когда мы подтвердим вашу заявку и вы сможете входить в личный кабинет</p>
                         </div>
                     </li>
                 </ul>
-
-                <a href="index.html" class="back-link">
-                    <i class="fas fa-arrow-left"></i> Вернуться на главную страницу
-                </a>
             </div>
         </div>
         
         <!-- Правая панель с формой входа -->
         <div class="form-panel">
             <div class="form-header">
-                <h2>Вход в аккаунт</h2>
-                <p>Введите ваши учетные данные для доступа к личному кабинету</p>
+                <h2>Создание аккаунта</h2>
+                <p>Заполните форму, чтобы отправить заяв на регистрацию</p>
             </div>
             
             <form id="loginForm">
-                <div class="form-group" style="display: flex; gap: 20px; align-items: flex-start;">
-                    <div class="name-field" style="flex: 1;">
-                        <label for="second-name">Фамилия:</label>
+                <div class="form-group form-group-triple">
+                    <div class="name-field">
+                        <label class="required" for="second-name">Фамилия</label>
                         <input type="text" id="second-name" style="padding-left: 20px;" class="form-control" placeholder="Иванов" required>
                     </div>
                     
-                    <div class="name-field" style="flex: 1;">
-                        <label for="first-name">Имя:</label>
+                    <div class="name-field">
+                        <label class="required" for="first-name">Имя</label>
                         <input type="text" id="first-name" style="padding-left: 20px;" class="form-control" placeholder="Иван" required>
                     </div>
                     
-                    <div class="name-field" style="flex: 1;">
-                        <label for="patronymic">Отчество:</label>
+                    <div class="name-field">
+                        <label for="patronymic">Отчество</label>
                         <input type="text" style="padding-left: 20px;" id="patronymic" class="form-control" placeholder="Иванович">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Электронная почта</label>
+                    <label class="required" for="email">Электронная почта</label>
                     <div class="input-with-icon">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
@@ -79,7 +84,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="password">Пароль</label>
+                    <label class="required" for="password">Пароль</label>
                     <div class="input-with-icon">
                         <i class="fas fa-lock"></i>
                         <input type="password" id="password" class="form-control" placeholder="Введите ваш пароль" required>
@@ -90,21 +95,13 @@
                     <div class="error-message" id="password-error">Пароль должен содержать не менее 6 символов</div>
                 </div>
                 
-                <div class="form-options">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Запомнить меня</label>
-                    </div>
-                    <a href="forgot-password.html" class="forgot-password">Забыли пароль?</a>
-                </div>
-                
                 <button type="submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt"></i> Войти в аккаунт
+                    Зарегистрироваться
                 </button>
             </form>
             
             <div class="register-link">
-                Еще нет аккаунта? <a href="login.html">Зарегистрируйтесь</a>
+                Уже есть аккаунт? <a href="login.html">Войти</a>
             </div>
         </div>
     </div>
