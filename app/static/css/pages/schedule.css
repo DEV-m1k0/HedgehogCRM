@@ -1,0 +1,214 @@
+#calendar-container {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    /* box-shadow: var(--shadow); */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Занимает всю высоту родителя */
+    min-height: 0; /* Важно для flex-контейнеров */
+}
+
+#calendar {
+    font-family: 'Inter', sans-serif;
+    flex: 1; /* Занимает все доступное пространство */
+    min-height: 500px; /* Минимальная высота */
+    max-height: calc(100vh - 300px); /* Ограничиваем максимальную высоту */
+}
+
+/* Кастомизация FullCalendar */
+.fc {
+    --fc-border-color: #e2e8f0;
+    --fc-button-border-color: var(--primary-color);
+    --fc-button-bg-color: var(--primary-color);
+    --fc-button-hover-bg-color: var(--primary-dark);
+    --fc-button-hover-border-color: var(--primary-dark);
+    --fc-button-active-bg-color: var(--primary-dark);
+    --fc-button-active-border-color: var(--primary-dark);
+    --fc-today-bg-color: rgba(67, 97, 238, 0.1);
+    height: 100%; /* Календарь на всю высоту контейнера */
+}
+
+.fc-view-harness {
+    flex: 1; /* Вид календаря занимает все пространство */
+    min-height: 0; /* Важно для flex */
+}
+
+.fc-toolbar-title {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.fc-col-header-cell {
+    background-color: #f1f5f9;
+    padding: 12px 0;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.fc-daygrid-day-number {
+    font-weight: 600;
+    color: var(--black);
+}
+
+.fc-event {
+    border-radius: 8px;
+    border: none;
+    padding: 8px 12px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.fc-event:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Модальное окно */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background-color: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalAppear 0.3s ease;
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.student-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.student-row:last-child {
+    border-bottom: none;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.lesson-type-1 { background-color: #4f46e5; color: white; }
+.lesson-type-2 { background-color: #10b981; color: white; }
+.lesson-type-3 { background-color: #f59e0b; color: white; }
+.lesson-type-4 { background-color: #8b5cf6; color: white; }
+
+.legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--gray-medium);
+    flex-shrink: 0; /* Не сжимается */
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.footer {
+    text-align: center;
+    color: var(--gray-color);
+    font-size: 14px;
+    padding: 20px;
+}
+
+/* Адаптивность для маленьких экранов */
+@media (max-width: 768px) {
+    #calendar-container {
+        padding: 0;
+        margin: 10px;
+    }
+    .fc-button-group {
+        width: 100%;
+        font-size: 20px;
+        gap: 5px;
+    }
+    .fc-toolbar {
+        flex-direction: column;
+        margin-bottom: 10px !important;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .legend {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .fc .fc-toolbar-title {
+        font-size: 1.6em;
+    }
+    
+    .fc .fc-button {
+        padding: 5px 10px;
+        font-size: 0.9em;
+    }
+    
+    .fc-daygrid-day-number {
+        font-size: 0.8em;
+    }
+}

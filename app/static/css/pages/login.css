@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--gray-light);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-heavy);
+    margin: 0;
+    padding: 0;
+}
+
+/* Левая панель с информацией */
+.info-panel {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary), #01c8ff);
+    color: var(--white);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-panel h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.info-panel p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.features-list {
+    list-style: none;
+    margin: 40px 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.features-list i {
+    margin-right: 15px;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Правая панель с формой */
+.form-panel {
+    flex: 1;
+    background-color: var(--white);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-header {
+    margin-bottom: 40px;
+}
+
+.form-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.form-header p {
+    color: var(--gray-dark);
+    font-size: 1.1rem;
+}
+
+.forgot-password {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--gray-dark);
+}
+
+.register-link a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* Сообщения об ошибке */
+.error-message {
+    color: var(--error);
+    font-size: 14px;
+    /* margin-top: 5px; */
+    display: none;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .form-container {
+        flex-direction: column;
+        max-width: 600px;
+    }
+    
+    .info-panel {
+        display: none;
+    }
+    
+    .form-panel {
+        padding: 50px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 10px;
+    }
+    
+    .info-panel, .form-panel {
+        padding: 30px 20px;
+    }
+    
+    .social-login {
+        flex-direction: column;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .user-type-selector {
+        width: 100%;
+    }
+}

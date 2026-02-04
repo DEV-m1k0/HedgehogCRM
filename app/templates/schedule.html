@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Расписание
+{% endblock %}
+
+{% block styles %}
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/main.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages/schedule.css') }}">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/adaptive@6.1.20/index.global.min.js"></script> -->
+    <script src="{{ url_for('static', filename='node_modules/fullcalendar/index.global.js') }}"></script>
+{% endblock %}
+
+{% block page_title %}Расписание занятий{% endblock %}
+{% block page_subtitle %}Страница для просмотра расписания занятий{% endblock %}
+
+{% block content %}
+
+    <div id="calendar-container">
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Модальное окно для урока -->
+    <div class="modal-overlay" id="lessonModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle">Добавление урока</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="lessonForm">
+                    <div class="form-group">
+                        <label for="lessonTopic"><i class="fas fa-book"></i> Тема урока</label>
+                        <input type="text" id="lessonTopic" class="form-control" placeholder="Введите тему урока" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lessonDate"><i class="fas fa-calendar"></i> Дата урока</label>
+                        <input type="date" id="lessonDate" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lessonTime"><i class="fas fa-clock"></i> Время начала</label>
+                        <input type="time" id="lessonTime" class="form-control" value="09:00" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lessonType"><i class="fas fa-tag"></i> Тип урока</label>
+                        <select id="lessonType" class="form-control">
+                            <option value="1">Математика</option>
+                            <option value="2">Физика</option>
+                            <option value="3">Химия</option>
+                            <option value="4">Информатика</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-users"></i> Ученики и оценки</label>
+                        <div id="studentsContainer">
+                            <!-- Сюда добавляются строки с учениками -->
+                        </div>
+                        <button type="button" class="btn btn-outline" id="addStudentBtn" style="margin-top: 15px;">
+                            <i class="fas fa-user-plus"></i> Добавить ученика
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lessonNotes"><i class="fas fa-sticky-note"></i> Заметки</label>
+                        <textarea id="lessonNotes" class="form-control" rows="4" placeholder="Дополнительные заметки к уроку..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="deleteLessonBtn">
+                    <i class="fas fa-trash"></i> Удалить урок
+                </button>
+                <button type="button" class="btn btn-outline" id="cancelLessonBtn">
+                    Отмена
+                </button>
+                <button type="button" class="btn btn-primary" id="saveLessonBtn">
+                    <i class="fas fa-save"></i> Сохранить урок
+                </button>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/schedule.js') }}"></script>
+{% endblock %}

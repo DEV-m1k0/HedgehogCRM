@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HedgehogCRM | {%  block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base_page.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <!-- Сайдбар -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo-container">
+            <div class="logo">
+                <i class="fas fa-satellite-dish"></i>
+                <span>HedgehogCRM</span>
+            </div>
+        </div>
+
+        <div class="nav-menu">
+            <a class="nav-item {% if request.path == '/user/dashboard' %}active{% endif %}">   
+                <i class="fas fa-chart-pie"></i>
+                <span>Дашборд</span>
+            </a>
+            <a class="nav-item {% if request.path == '/user/clients' %}active{% endif %}">
+                <i class="fas fa-users"></i>
+                <span>Клиенты</span>
+            </a>
+            <a class="nav-item {% if request.path == '/user/tasks' %}active{% endif %}">
+                <i class="fas fa-tasks"></i>
+                <span>Задачи</span>
+            </a>
+            <a class="nav-item {% if request.path == '/schedule/' %}active{% endif %}" href="/schedule">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Календарь</span>
+            </a>
+            <a class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Настройки</span>
+            </a>
+        </div>
+
+        <div class="user-profile">
+            <div class="user-avatar">{{ user.second_name[0] }}{{ user.first_name[0] }}</div>
+            <div class="user-info">
+                <h4>{{ user.second_name }} {{ user.first_name }} {{ user.patronymic }}</h4>
+                <p>{{ user.get_role() }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Шапка -->
+        <header class="header">
+            <div class="header-left">
+                <h1>{% block page_title %}Тест{% endblock %}</h1>
+                <div class="logo mobile">
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>HedgehogCRM</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="user-profile-mobile">
+                    <div class="user-avatar-mobile">{{ user.second_name[0] }}{{ user.first_name[0] }}</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Контейнер для конкретной страницы -->
+        <div class="page-content" id="pageContent">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    {% block scripts %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+</html>
